@@ -17,7 +17,7 @@ func main() {
 
 	fmt.Println("---------------------")
 	if len(os.Args) < 3 {
-		fmt.Fprintln(os.Stderr, "not enough args")
+		fmt.Fprintln(os.Stderr, "Not enough args")
 		os.Exit(-1)
 	}
 

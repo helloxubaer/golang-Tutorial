@@ -37,15 +37,11 @@ func main() {
 	fmt.Printf("%#v\n", resp2.response)
 }
 
-func (r *responseWrapper) UnmarshalJSON(b []byte) error {
+func (r *responseWrapper) UnmarshalJSON(b []byte) (err error) {
 	var raw map[string]interface{}
 
-	if err := json.Unmarshal(b, &r.response); err != nil {
-		return fmt.Errorf("error unmarshalling response: %w", err)
-	}
-	if err := json.Unmarshal(b, &raw); err != nil {
-		return fmt.Errorf("error unmarshalling raw: %w", err)
-	}
+	err = json.Unmarshal(b, &r.response) // ignore error
+	err = json.Unmarshal(b, &raw)        // ignore error
 
 	switch r.Item {
 	case "album":
